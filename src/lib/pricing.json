@@ -6,8 +6,8 @@
     {
       "id": "website",
       "stripeName": "Sajt / Website",
-      "monthly": 19,
-      "yearly": 190,
+      "monthly": 38,
+      "yearly": 380,
       "from": false,
       "highlight": false,
       "paymentLinks": {
@@ -18,8 +18,8 @@
     {
       "id": "booking",
       "stripeName": "Sajt + chatbot za zakazivanje / Website + booking chatbot",
-      "monthly": 35,
-      "yearly": 350,
+      "monthly": 70,
+      "yearly": 700,
       "from": false,
       "highlight": true,
       "paymentLinks": {
@@ -30,8 +30,8 @@
     {
       "id": "ai",
       "stripeName": "Custom AI chatbot (LLM)",
-      "monthly": 79,
-      "yearly": 790,
+      "monthly": 158,
+      "yearly": 1580,
       "from": true,
       "highlight": false,
       "paymentLinks": {

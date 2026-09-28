@@ -18,7 +18,8 @@ export function HeroSection({ t }: Props) {
         <div>
           <p className="eyebrow animate-fade-up">{t.hero.eyebrow}</p>
           <h1 className="mt-5 animate-fade-up font-display text-[2.6rem] font-semibold leading-[1.04] tracking-tight text-foreground text-balance [animation-delay:80ms] sm:text-6xl lg:text-[4.1rem]">
-            {t.hero.title} <em className="font-medium text-primary">{t.hero.titleAccent}</em>
+            {t.hero.title}{" "}
+            <em className="block font-medium text-primary">{t.hero.titleAccent}</em>
           </h1>
           <p className="mt-6 max-w-xl animate-fade-up text-lg leading-relaxed text-muted-foreground text-pretty [animation-delay:160ms]">
             {t.hero.lead}

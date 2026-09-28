@@ -48,7 +48,7 @@ Otvori [http://localhost:3000](http://localhost:3000).
 Cene su na **jednom mestu**: `src/lib/pricing.json`.
 
 ```json
-{ "id": "booking", "monthly": 35, "yearly": 350, "from": false, "highlight": true }
+{ "id": "booking", "monthly": 70, "yearly": 700, "from": false, "highlight": true }
 ```
 
 - `from: true` → prikazuje „od" ispred cene i dugme „Zatraži ponudu" (Custom AI chatbot).

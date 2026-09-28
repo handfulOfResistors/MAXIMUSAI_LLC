@@ -31,8 +31,8 @@ export const en: Dictionary = {
   },
   hero: {
     eyebrow: "For hair and beauty salons",
-    title: "A website that fills",
-    titleAccent: "your salon's calendar.",
+    title: "You focus on your clients.",
+    titleAccent: "Bookings take care of themselves.",
     lead: "We build modern salon websites with a chatbot that books clients straight into your Google Calendar. No per-booking fees, and no new app for you to learn.",
     ctaPrimary: "See plans",
     ctaSecondary: "How it works",
@@ -414,7 +414,7 @@ export const en: Dictionary = {
         doing: [
           "Create a Google account for the salon — a business account, not an employee's personal one.",
           "Turn on two-step verification.",
-          "Create a new calendar called “Bookings — salon name”, with the Belgrade time zone.",
+          "Create a new calendar called “Bookings — salon name”, set to your salon's local time zone.",
           "Share the calendar with your staff and with {email}, at the “Make changes to events” level.",
           "In the calendar settings, under “Integrate calendar”, copy the calendar ID.",
           "Install Google Calendar on your phone and turn on notifications.",
@@ -439,7 +439,7 @@ export const en: Dictionary = {
         doing: [
           "Open a private window (Ctrl+Shift+N) and sign in to the salon account only.",
           "At script.google.com, create a new project and paste in the contents of Code.gs.",
-          "In the project settings, set the time zone to Belgrade (GMT+01:00).",
+          "In the project settings, set the time zone to your salon's local time zone.",
           "Run the “dijagnostika” function and grant access — the log must show \"kalendarPronadjen\": true.",
           "Publish it: Deploy → New deployment → Web app, Execute as: Me, Who has access: Anyone.",
         ],
@@ -526,7 +526,7 @@ export const en: Dictionary = {
       ],
       [
         "Bookings are off by a few hours",
-        "The project time zone isn't Belgrade. Go back to the project settings.",
+        "The project time zone doesn't match your salon's local time zone. Go back to the project settings.",
       ],
       [
         "Something else",

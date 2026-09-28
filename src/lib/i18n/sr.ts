@@ -29,8 +29,8 @@ export const sr = {
   },
   hero: {
     eyebrow: "Za frizerske i kozmetičke salone",
-    title: "Sajt koji vašem salonu",
-    titleAccent: "popunjava kalendar.",
+    title: "Vi radite sa klijentima.",
+    titleAccent: "Termini se zakazuju sami.",
     lead: "Pravimo moderne sajtove za salone, sa chatbotom koji klijentima zakazuje termine direktno u vaš Google kalendar. Bez provizije po terminu i bez nove aplikacije koju morate da učite.",
     ctaPrimary: "Pogledaj pakete",
     ctaSecondary: "Kako funkcioniše",
