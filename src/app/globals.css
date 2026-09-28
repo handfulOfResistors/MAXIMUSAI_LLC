@@ -4,26 +4,28 @@
 
 @layer base {
   :root {
-    --background: 220 24% 6%;
-    --foreground: 210 20% 96%;
-    --card: 220 22% 9%;
-    --card-foreground: 210 20% 96%;
-    --popover: 220 22% 9%;
-    --popover-foreground: 210 20% 96%;
-    --primary: 168 72% 42%;
-    --primary-foreground: 220 30% 6%;
-    --secondary: 220 18% 14%;
-    --secondary-foreground: 210 20% 92%;
-    --muted: 220 16% 14%;
-    --muted-foreground: 215 12% 62%;
-    --accent: 168 40% 16%;
-    --accent-foreground: 168 70% 72%;
-    --destructive: 0 72% 51%;
-    --destructive-foreground: 0 0% 98%;
-    --border: 220 16% 18%;
-    --input: 220 16% 18%;
-    --ring: 168 72% 42%;
-    --radius: 0.625rem;
+    --background: 40 33% 98%;
+    --foreground: 230 25% 12%;
+    --card: 0 0% 100%;
+    --card-foreground: 230 25% 12%;
+    --primary: 343 58% 40%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 36 28% 93%;
+    --secondary-foreground: 230 25% 12%;
+    --muted: 36 24% 95%;
+    --muted-foreground: 230 9% 38%;
+    --accent: 343 62% 96%;
+    --accent-foreground: 343 58% 32%;
+    --ink: 232 26% 11%;
+    --ink-foreground: 36 30% 96%;
+    --ink-muted: 230 12% 70%;
+    --success: 152 55% 32%;
+    --destructive: 0 68% 45%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 32 16% 87%;
+    --input: 32 14% 82%;
+    --ring: 343 58% 40%;
+    --radius: 0.75rem;
   }
 
   * {
@@ -32,19 +34,73 @@
 
   html {
     @apply scroll-smooth antialiased;
+    scroll-padding-top: 5rem;
   }
 
   body {
-    @apply bg-background text-foreground font-sans;
+    @apply bg-background font-sans text-foreground;
   }
 
   ::selection {
-    @apply bg-primary/30 text-foreground;
+    @apply bg-primary/20 text-foreground;
+  }
+
+  :focus-visible {
+    @apply outline-none ring-2 ring-ring ring-offset-2 ring-offset-background;
+  }
+}
+
+@layer components {
+  .eyebrow {
+    @apply font-sans text-xs font-semibold uppercase tracking-[0.2em] text-primary;
+  }
+
+  .section-title {
+    @apply font-display text-3xl font-semibold leading-[1.1] tracking-tight text-foreground sm:text-4xl md:text-[2.75rem];
+  }
+
+  .legal h2 {
+    @apply mt-10 font-display text-xl font-semibold text-foreground;
+  }
+
+  .legal p,
+  .legal li {
+    @apply leading-relaxed text-muted-foreground;
+  }
+
+  .legal p {
+    @apply mt-3;
+  }
+
+  .legal ul {
+    @apply mt-3 list-disc space-y-2 pl-5;
+  }
+
+  .legal strong {
+    @apply font-semibold text-foreground;
+  }
+
+  .legal a {
+    @apply text-primary underline-offset-4 hover:underline;
   }
 }
 
 @layer utilities {
   .text-balance {
     text-wrap: balance;
+  }
+
+  .text-pretty {
+    text-wrap: pretty;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
   }
 }

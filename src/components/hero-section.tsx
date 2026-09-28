@@ -1,73 +1,53 @@
+import Link from "next/link";
+import { ArrowRight, Check } from "lucide-react";
+import { ChatMockup } from "@/components/chat-mockup";
 import { Button } from "@/components/ui/button";
-import { company } from "@/lib/company";
+import type { Dictionary } from "@/lib/i18n/sr";
 
-export function HeroSection() {
+type Props = { t: Dictionary };
+
+export function HeroSection({ t }: Props) {
   return (
-    <section className="relative min-h-[100svh] overflow-hidden">
+    <section className="relative overflow-hidden pt-16">
       <div className="pointer-events-none absolute inset-0" aria-hidden>
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,hsl(168_45%_18%_/_0.45),transparent_55%),radial-gradient(ellipse_at_bottom_right,hsl(210_40%_20%_/_0.35),transparent_50%),linear-gradient(180deg,hsl(220_28%_5%),hsl(220_24%_7%)_45%,hsl(220_24%_6%))]" />
-        <div className="absolute inset-0 opacity-[0.18] [background-image:linear-gradient(hsl(210_20%_80%_/_0.08)_1px,transparent_1px),linear-gradient(90deg,hsl(210_20%_80%_/_0.08)_1px,transparent_1px)] [background-size:64px_64px] animate-grid-drift" />
-        <div className="absolute -left-24 top-24 h-72 w-72 rounded-full bg-primary/10 blur-3xl animate-float" />
-        <div className="absolute -right-16 bottom-20 h-80 w-80 rounded-full bg-sky-500/10 blur-3xl animate-float [animation-delay:1.5s]" />
-        <svg
-          className="absolute inset-x-0 bottom-0 h-[42%] w-full opacity-40"
-          viewBox="0 0 1440 420"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-          preserveAspectRatio="xMidYMax slice"
-        >
-          <path
-            d="M0 280C180 220 260 180 420 200C580 220 640 300 820 290C1000 280 1120 180 1280 170C1360 165 1400 175 1440 190V420H0V280Z"
-            fill="url(#terrain)"
-          />
-          <path
-            d="M220 250L280 140L340 250H220Z"
-            stroke="hsl(168 72% 42% / 0.55)"
-            strokeWidth="2"
-            fill="hsl(168 72% 42% / 0.08)"
-          />
-          <rect
-            x="980"
-            y="120"
-            width="72"
-            height="96"
-            rx="4"
-            stroke="hsl(200 70% 60% / 0.4)"
-            strokeWidth="2"
-            fill="hsl(200 70% 60% / 0.06)"
-          />
-          <circle
-            cx="1180"
-            cy="160"
-            r="34"
-            stroke="hsl(168 72% 42% / 0.45)"
-            strokeWidth="2"
-            fill="hsl(168 72% 42% / 0.05)"
-          />
-          <defs>
-            <linearGradient id="terrain" x1="720" y1="160" x2="720" y2="420">
-              <stop stopColor="hsl(168 40% 20%)" stopOpacity="0.45" />
-              <stop offset="1" stopColor="hsl(220 24% 6%)" stopOpacity="0" />
-            </linearGradient>
-          </defs>
-        </svg>
+        <div className="absolute inset-0 bg-[radial-gradient(60%_55%_at_85%_20%,hsl(343_70%_92%/0.9),transparent_70%),radial-gradient(45%_45%_at_5%_90%,hsl(36_60%_90%/0.9),transparent_70%)]" />
+        <div className="absolute inset-0 opacity-[0.35] [background-image:radial-gradient(hsl(230_20%_50%/0.25)_1px,transparent_1px)] [background-size:22px_22px] [mask-image:linear-gradient(to_bottom,black,transparent_85%)]" />
       </div>
 
-      <div className="relative mx-auto flex min-h-[100svh] max-w-6xl flex-col justify-center px-6 pb-24 pt-28">
-        <p className="animate-fade-up font-display text-sm font-semibold uppercase tracking-[0.28em] text-primary">
-          {company.brandName}
-        </p>
-        <h1 className="animate-fade-up mt-4 max-w-3xl font-display text-5xl font-semibold leading-[1.05] tracking-tight text-foreground sm:text-6xl md:text-7xl [animation-delay:100ms]">
-          {company.tagline}
-        </h1>
-        <p className="animate-fade-up mt-6 max-w-xl text-lg leading-relaxed text-muted-foreground [animation-delay:200ms]">
-          Crafted worlds, thoughtful design, and publishing built for players who
-          value quality over noise.
-        </p>
-        <div className="animate-fade-up mt-10 [animation-delay:300ms]">
-          <Button asChild size="lg">
-            <a href="#games">Browse Games</a>
-          </Button>
+      <div className="relative mx-auto grid max-w-6xl items-center gap-16 px-4 pb-24 pt-14 sm:px-6 md:pt-20 lg:grid-cols-[1.1fr_0.9fr] lg:pb-32">
+        <div>
+          <p className="eyebrow animate-fade-up">{t.hero.eyebrow}</p>
+          <h1 className="mt-5 animate-fade-up font-display text-[2.6rem] font-semibold leading-[1.04] tracking-tight text-foreground text-balance [animation-delay:80ms] sm:text-6xl lg:text-[4.1rem]">
+            {t.hero.title} <em className="font-medium text-primary">{t.hero.titleAccent}</em>
+          </h1>
+          <p className="mt-6 max-w-xl animate-fade-up text-lg leading-relaxed text-muted-foreground text-pretty [animation-delay:160ms]">
+            {t.hero.lead}
+          </p>
+          <div className="mt-9 flex animate-fade-up flex-col gap-3 [animation-delay:240ms] sm:flex-row">
+            <Button asChild size="lg">
+              <Link href="/pricing">
+                {t.hero.ctaPrimary}
+                <ArrowRight />
+              </Link>
+            </Button>
+            <Button asChild size="lg" variant="outline">
+              <Link href="/#process">{t.hero.ctaSecondary}</Link>
+            </Button>
+          </div>
+          <ul className="mt-9 flex animate-fade-up flex-col gap-2.5 text-sm text-foreground [animation-delay:320ms] sm:flex-row sm:flex-wrap sm:gap-x-6">
+            {t.hero.points.map((point) => (
+              <li key={point} className="flex items-center gap-2">
+                <span className="flex h-5 w-5 items-center justify-center rounded-full bg-accent text-accent-foreground">
+                  <Check className="h-3 w-3" strokeWidth={3} />
+                </span>
+                {point}
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <div className="pb-8 lg:pb-0">
+          <ChatMockup t={t.chat} />
         </div>
       </div>
     </section>

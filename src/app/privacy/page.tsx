@@ -1,240 +1,258 @@
 import type { Metadata } from "next";
-import Link from "next/link";
-import { SiteFooter } from "@/components/site-footer";
-import { SiteHeader } from "@/components/site-header";
+import { LegalPage } from "@/components/legal-page";
 import { company } from "@/lib/company";
+import { getDictionary, getLang } from "@/lib/i18n/server";
 
-export const metadata: Metadata = {
-  title: "Privacy Policy",
-};
+export function generateMetadata(): Metadata {
+  return { title: getDictionary().meta.privacyTitle, alternates: { canonical: "/privacy" } };
+}
 
 export default function PrivacyPage() {
+  const lang = getLang();
+  const t = getDictionary(lang);
+
+  return (
+    <LegalPage
+      title={t.meta.privacyTitle}
+      updatedLabel={t.legal.updated}
+      updated={lang === "sr" ? "28. septembar 2026." : "September 28, 2026"}
+      homeLabel={t.nav.home}
+    >
+      {lang === "sr" ? <PrivacySr /> : <PrivacyEn />}
+    </LegalPage>
+  );
+}
+
+const mail = <a href={`mailto:${company.email}`}>{company.email}</a>;
+
+function PrivacySr() {
   return (
     <>
-      <SiteHeader />
-      <main className="mx-auto max-w-3xl px-6 pb-24 pt-28">
-        <p className="text-sm text-muted-foreground">
-          <Link href="/" className="hover:text-primary">
-            Home
-          </Link>{" "}
-          / Privacy Policy
-        </p>
-        <h1 className="mt-4 font-display text-4xl font-semibold tracking-tight">
-          Privacy Policy
-        </h1>
-        <p className="mt-2 text-sm text-muted-foreground">
-          Last updated: July 21, 2026
-        </p>
+      <p>
+        Ova politika objašnjava kako {company.legalName} („mi“), kompanija registrovana u saveznoj
+        državi Delaver (SAD) sa timom u Srbiji, prikuplja, koristi i štiti podatke o ličnosti kada
+        posećujete ovaj sajt, pišete nam, pretplatite se na naše usluge ili koristite sajtove,
+        sisteme za zakazivanje i chatbotove koje pravimo za salone.
+      </p>
 
-        <div className="prose-legal mt-10 space-y-8 text-muted-foreground leading-relaxed">
-          <p>
-            This Privacy Policy explains how {company.legalName} (&quot;Company&quot;,
-            &quot;we&quot;, &quot;us&quot;, or &quot;our&quot;), a Delaware limited
-            liability company, collects, uses, discloses, and protects information
-            when you visit our website, contact us, or otherwise interact with our
-            online services (collectively, the &quot;Services&quot;).
-          </p>
-          <p>
-            By using the Services, you agree to the practices described in this
-            Privacy Policy. If you do not agree, please do not use the Services.
-          </p>
+      <h2>1. Koje podatke prikupljamo</h2>
+      <ul>
+        <li>
+          <strong>Kontakt forma i email</strong> — ime, email, naziv salona, telefon i sadržaj poruke.
+        </li>
+        <li>
+          <strong>Pretplata i plaćanje</strong> — plaćanje obrađuje Stripe. Mi dobijamo ime, email,
+          adresu za račun, poreski broj (PIB) ako ga unesete, telefon, naziv salona, status
+          pretplate i istoriju računa. Broj kartice nikada ne vidimo i ne čuvamo.
+        </li>
+        <li>
+          <strong>Materijali za izradu sajta</strong> — upitnik, logo, fotografije, cenovnik, podaci
+          o timu, ID Google kalendara i adresa Web aplikacije koje nam pošaljete.
+        </li>
+        <li>
+          <strong>Tehnički podaci</strong> — serverski zapisi (IP adresa, pregledač, posećene
+          stranice) i jedan neophodni kolačić <code>mx-lang</code> koji pamti izabrani jezik. Ne
+          koristimo kolačiće za analitiku ni reklame.
+        </li>
+      </ul>
 
-          <section className="space-y-3">
-            <h2 className="font-display text-xl font-semibold text-foreground">
-              1. Information We Collect
-            </h2>
-            <p>We may collect the following categories of information:</p>
-            <ul className="list-disc space-y-2 pl-5">
-              <li>
-                <span className="text-foreground">Contact information</span> —
-                such as your name, email address, and message content when you
-                reach out to us through a form or email.
-              </li>
-              <li>
-                <span className="text-foreground">Technical information</span> —
-                such as IP address, browser type, device type, operating system,
-                referring URLs, and general usage data collected through server
-                logs or similar technologies.
-              </li>
-              <li>
-                <span className="text-foreground">Transaction information</span> —
-                if you purchase products or services from us in the future, we may
-                collect order details and related billing metadata. Payment card
-                data is typically processed by third-party payment providers and is
-                not stored by us in full.
-              </li>
-              <li>
-                <span className="text-foreground">Communications</span> — records
-                of correspondence you send to us, including support requests and
-                business inquiries.
-              </li>
-            </ul>
-          </section>
+      <h2>2. Podaci klijenata vašeg salona</h2>
+      <p>
+        Chatbot za zakazivanje upisuje ime, telefon, email i uslugu direktno u Google kalendar u{" "}
+        <strong>vašem</strong> Google nalogu. Za te podatke rukovalac ste vi (salon), a mi smo
+        obrađivač samo dok imamo pristup kalendaru radi podešavanja ili podrške — pristup koji možete
+        ukinuti u svakom trenutku.
+      </p>
+      <p>
+        Kod paketa Custom AI chatbot, poruke koje posetioci pišu šalju se odabranom pružaocu jezičkog
+        modela (npr. OpenAI, Anthropic ili Google) radi generisanja odgovora. Koristimo poslovne API
+        usluge tih pružalaca i biramo podešavanja u kojima se podaci ne koriste za treniranje modela,
+        tamo gde pružalac nudi takvu opciju.
+      </p>
 
-          <section className="space-y-3">
-            <h2 className="font-display text-xl font-semibold text-foreground">
-              2. How We Use Information
-            </h2>
-            <p>We use collected information to:</p>
-            <ul className="list-disc space-y-2 pl-5">
-              <li>operate, maintain, and improve the Services;</li>
-              <li>respond to inquiries and provide customer support;</li>
-              <li>process orders, payments, and related business operations;</li>
-              <li>monitor performance, security, and fraud prevention;</li>
-              <li>comply with legal obligations; and</li>
-              <li>
-                communicate about updates, products, or administrative notices,
-                where permitted by law.
-              </li>
-            </ul>
-          </section>
+      <h2>3. Zašto koristimo podatke</h2>
+      <ul>
+        <li>da odgovorimo na upit i pripremimo ponudu;</li>
+        <li>da napravimo, hostujemo i održavamo vaš sajt i sistem za zakazivanje;</li>
+        <li>da naplatimo pretplatu, izdamo račun i ispunimo poreske obaveze;</li>
+        <li>da vas obavestimo o izmenama usluge, cena ili ovih pravila;</li>
+        <li>da zaštitimo sajt i usluge od zloupotrebe.</li>
+      </ul>
+      <p>
+        Pravni osnov je izvršenje ugovora, naš legitimni interes (bezbednost i unapređenje usluge),
+        zakonska obaveza (računovodstvo) i, gde je potrebno, vaš pristanak.
+      </p>
 
-          <section className="space-y-3">
-            <h2 className="font-display text-xl font-semibold text-foreground">
-              3. Cookies and Similar Technologies
-            </h2>
-            <p>
-              We may use cookies, pixels, and similar technologies to operate the
-              website, remember preferences, and understand how visitors use our
-              Services. You can control cookies through your browser settings.
-              Disabling cookies may affect certain site features.
-            </p>
-          </section>
+      <h2>4. Kome prosleđujemo podatke</h2>
+      <p>Podatke ne prodajemo. Delimo ih samo sa pružaocima usluga koji nam pomažu u radu:</p>
+      <ul>
+        <li>Stripe — obrada plaćanja i računa;</li>
+        <li>Google — email (Gmail), Google Calendar i Apps Script za zakazivanje;</li>
+        <li>pružalac hostinga na kome radi sajt;</li>
+        <li>pružaoci jezičkih modela — samo za paket Custom AI chatbot;</li>
+        <li>savetnici i državni organi, kada to zakon zahteva.</li>
+      </ul>
 
-          <section className="space-y-3">
-            <h2 className="font-display text-xl font-semibold text-foreground">
-              4. How We Share Information
-            </h2>
-            <p>
-              We do not sell your personal information. We may share information
-              with:
-            </p>
-            <ul className="list-disc space-y-2 pl-5">
-              <li>
-                service providers who help us host, analyze, communicate, or
-                process payments;
-              </li>
-              <li>
-                professional advisors such as lawyers, accountants, or auditors;
-              </li>
-              <li>
-                authorities when required by law, legal process, or to protect
-                rights, safety, and security; and
-              </li>
-              <li>
-                parties involved in a corporate transaction, such as a merger,
-                acquisition, or asset sale, subject to appropriate safeguards.
-              </li>
-            </ul>
-          </section>
+      <h2>5. Prenos podataka u inostranstvo</h2>
+      <p>
+        Pošto smo američka kompanija i koristimo globalne pružaoce usluga, podaci se mogu obrađivati u
+        SAD i drugim zemljama. U tim slučajevima oslanjamo se na odgovarajuće mere zaštite, kao što su
+        standardne ugovorne klauzule, gde su primenljive.
+      </p>
 
-          <section className="space-y-3">
-            <h2 className="font-display text-xl font-semibold text-foreground">
-              5. Data Retention
-            </h2>
-            <p>
-              We retain personal information only for as long as reasonably
-              necessary to fulfill the purposes described in this Policy, unless a
-              longer retention period is required or permitted by law.
-            </p>
-          </section>
+      <h2>6. Koliko dugo čuvamo podatke</h2>
+      <ul>
+        <li>upite iz kontakt forme — do 24 meseca od poslednje komunikacije;</li>
+        <li>podatke o plaćanju i račune — koliko nalažu poreski i računovodstveni propisi;</li>
+        <li>
+          materijale za sajt — dok traje pretplata i do 90 dana posle njenog završetka, osim ako ranije
+          zatražite brisanje.
+        </li>
+      </ul>
 
-          <section className="space-y-3">
-            <h2 className="font-display text-xl font-semibold text-foreground">
-              6. Data Security
-            </h2>
-            <p>
-              We take reasonable administrative, technical, and organizational
-              measures to protect personal information. However, no method of
-              transmission or storage is completely secure, and we cannot
-              guarantee absolute security.
-            </p>
-          </section>
+      <h2>7. Vaša prava</h2>
+      <p>
+        U skladu sa Zakonom o zaštiti podataka o ličnosti i GDPR-om, imate pravo na pristup, ispravku,
+        brisanje, ograničenje obrade, prenosivost i prigovor, kao i pravo da povučete pristanak. Zahtev
+        pošaljite na {mail}. Imate i pravo da podnesete pritužbu Povereniku za informacije od javnog
+        značaja i zaštitu podataka o ličnosti.
+      </p>
 
-          <section className="space-y-3">
-            <h2 className="font-display text-xl font-semibold text-foreground">
-              7. International Visitors
-            </h2>
-            <p>
-              Our Company is organized in the United States. If you access the
-              Services from outside the United States, your information may be
-              transferred to and processed in the United States or other
-              jurisdictions that may have different data protection laws than your
-              country of residence.
-            </p>
-          </section>
+      <h2>8. Bezbednost</h2>
+      <p>
+        Primenjujemo razumne tehničke i organizacione mere zaštite. Nikada ne tražimo lozinke od vaših
+        naloga — pristup kalendaru dobijamo isključivo pozivnicom koju vi kontrolišete.
+      </p>
 
-          <section className="space-y-3">
-            <h2 className="font-display text-xl font-semibold text-foreground">
-              8. Your Rights and Choices
-            </h2>
-            <p>
-              Depending on your location, you may have rights to request access,
-              correction, deletion, or restriction of your personal information, or
-              to object to certain processing. To exercise available rights, contact
-              us using the details below. We may need to verify your identity before
-              responding.
-            </p>
-          </section>
+      <h2>9. Deca</h2>
+      <p>Naše usluge su namenjene preduzećima i nisu namenjene licima mlađim od 16 godina.</p>
 
-          <section className="space-y-3">
-            <h2 className="font-display text-xl font-semibold text-foreground">
-              9. Children&apos;s Privacy
-            </h2>
-            <p>
-              The Services are not directed to children under 13, and we do not
-              knowingly collect personal information from children under 13. If you
-              believe a child has provided us with personal information, please
-              contact us so we can take appropriate action.
-            </p>
-          </section>
+      <h2>10. Izmene</h2>
+      <p>
+        Ovu politiku možemo povremeno menjati. Datum poslednje izmene je naveden na vrhu stranice, a o
+        značajnim izmenama pretplatnike obaveštavamo emailom.
+      </p>
 
-          <section className="space-y-3">
-            <h2 className="font-display text-xl font-semibold text-foreground">
-              10. Third-Party Links
-            </h2>
-            <p>
-              Our Services may contain links to third-party websites or services.
-              We are not responsible for the privacy practices of those third
-              parties. We encourage you to review their privacy policies.
-            </p>
-          </section>
+      <h2>11. Kontakt</h2>
+      <p>
+        {company.legalName} · {mail}
+      </p>
+    </>
+  );
+}
 
-          <section className="space-y-3">
-            <h2 className="font-display text-xl font-semibold text-foreground">
-              11. Changes to This Policy
-            </h2>
-            <p>
-              We may update this Privacy Policy from time to time. The &quot;Last
-              updated&quot; date at the top of this page will reflect the latest
-              revision. Continued use of the Services after changes become
-              effective constitutes acceptance of the updated Policy.
-            </p>
-          </section>
+function PrivacyEn() {
+  return (
+    <>
+      <p>
+        This policy explains how {company.legalName} (“we”, “us”), a Delaware limited liability company
+        with a team in Serbia, collects, uses and protects personal data when you visit this website,
+        contact us, subscribe to our services, or use the websites, booking systems and chatbots we build
+        for salons.
+      </p>
 
-          <section className="space-y-3">
-            <h2 className="font-display text-xl font-semibold text-foreground">
-              12. Contact Us
-            </h2>
-            <p>
-              If you have questions about this Privacy Policy or our data
-              practices, contact:
-            </p>
-            <p className="text-foreground">
-              {company.legalName}
-              <br />
-              Email:{" "}
-              <a
-                href={`mailto:${company.email}`}
-                className="text-primary hover:underline"
-              >
-                {company.email}
-              </a>
-            </p>
-          </section>
-        </div>
-      </main>
-      <SiteFooter />
+      <h2>1. Information we collect</h2>
+      <ul>
+        <li>
+          <strong>Contact form and email</strong> — name, email, salon name, phone number and message.
+        </li>
+        <li>
+          <strong>Subscription and payment</strong> — payments are processed by Stripe. We receive your
+          name, email, billing address, tax ID if you provide one, phone number, salon name, subscription
+          status and invoice history. We never see or store your full card number.
+        </li>
+        <li>
+          <strong>Project materials</strong> — the intake form, logo, photos, price list, team details,
+          Google Calendar ID and Web app URL you send us.
+        </li>
+        <li>
+          <strong>Technical data</strong> — server logs (IP address, browser, pages visited) and one
+          strictly necessary cookie, <code>mx-lang</code>, which remembers your language. We don&apos;t use
+          analytics or advertising cookies.
+        </li>
+      </ul>
+
+      <h2>2. Your salon&apos;s client data</h2>
+      <p>
+        The booking chatbot writes names, phone numbers, emails and services directly into the Google
+        Calendar in <strong>your</strong> Google account. You (the salon) are the controller of that
+        data; we act as a processor only while we have calendar access for setup or support — access you
+        can revoke at any time.
+      </p>
+      <p>
+        With the Custom AI chatbot plan, messages written by visitors are sent to the selected language
+        model provider (e.g. OpenAI, Anthropic or Google) to generate replies. We use these
+        providers&apos; business API services and choose settings under which data is not used for model
+        training, where the provider offers that option.
+      </p>
+
+      <h2>3. How we use information</h2>
+      <ul>
+        <li>to answer your enquiry and prepare a quote;</li>
+        <li>to build, host and maintain your website and booking system;</li>
+        <li>to bill your subscription, issue invoices and meet tax obligations;</li>
+        <li>to tell you about changes to the service, prices or these policies;</li>
+        <li>to protect the website and services from abuse.</li>
+      </ul>
+      <p>
+        Our legal bases are performance of a contract, our legitimate interests (security and service
+        improvement), legal obligations (accounting) and, where required, your consent.
+      </p>
+
+      <h2>4. Who we share information with</h2>
+      <p>We don&apos;t sell personal data. We share it only with providers that help us operate:</p>
+      <ul>
+        <li>Stripe — payment processing and invoicing;</li>
+        <li>Google — email (Gmail), Google Calendar and Apps Script for bookings;</li>
+        <li>the hosting provider that runs the website;</li>
+        <li>language model providers — only for the Custom AI chatbot plan;</li>
+        <li>professional advisers and authorities, where required by law.</li>
+      </ul>
+
+      <h2>5. International transfers</h2>
+      <p>
+        As a US company using global service providers, your data may be processed in the United States
+        and other countries. Where applicable, we rely on appropriate safeguards such as standard
+        contractual clauses.
+      </p>
+
+      <h2>6. How long we keep data</h2>
+      <ul>
+        <li>contact enquiries — up to 24 months after our last communication;</li>
+        <li>payment data and invoices — as long as tax and accounting laws require;</li>
+        <li>
+          project materials — for the duration of your subscription and up to 90 days after it ends,
+          unless you ask us to delete them sooner.
+        </li>
+      </ul>
+
+      <h2>7. Your rights</h2>
+      <p>
+        Depending on where you live (including under the GDPR and Serbia&apos;s Law on Personal Data
+        Protection), you have the right to access, correct, delete, restrict, port and object to the
+        processing of your data, and to withdraw consent. Send requests to {mail}. You may also lodge a
+        complaint with your local data protection authority.
+      </p>
+
+      <h2>8. Security</h2>
+      <p>
+        We apply reasonable technical and organisational safeguards. We never ask for your account
+        passwords — we get calendar access only through an invitation that you control.
+      </p>
+
+      <h2>9. Children</h2>
+      <p>Our services are intended for businesses and not for anyone under 16.</p>
+
+      <h2>10. Changes</h2>
+      <p>
+        We may update this policy from time to time. The date at the top shows the latest revision, and we
+        email subscribers about significant changes.
+      </p>
+
+      <h2>11. Contact</h2>
+      <p>
+        {company.legalName} · {mail}
+      </p>
     </>
   );
 }

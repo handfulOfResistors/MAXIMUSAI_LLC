@@ -1,117 +1,194 @@
 "use client";
 
 import { FormEvent, useState } from "react";
+import { Mail } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
-import { company } from "@/lib/company";
+import { fill } from "@/lib/i18n/config";
+import type { Dictionary } from "@/lib/i18n/sr";
 
 type Status = "idle" | "loading" | "success" | "error";
+type Topic = keyof Dictionary["contact"]["topics"];
+type ErrorCode = keyof Dictionary["contact"]["errors"];
 
-export function ContactSection() {
+type Props = {
+  t: Dictionary["contact"];
+  email: string;
+  id?: string;
+  title?: string;
+  lead?: string;
+  defaultTopic?: Topic;
+};
+
+export function ContactSection({
+  t,
+  email,
+  id = "contact",
+  title,
+  lead,
+  defaultTopic = "general",
+}: Props) {
   const [status, setStatus] = useState<Status>("idle");
-  const [errorMessage, setErrorMessage] = useState("");
+  const [errorCode, setErrorCode] = useState<ErrorCode>("send_failed");
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     setStatus("loading");
-    setErrorMessage("");
 
     const form = event.currentTarget;
     const data = new FormData(form);
+    const field = (name: string) => String(data.get(name) ?? "");
 
     try {
       const response = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          name: String(data.get("name") ?? ""),
-          email: String(data.get("email") ?? ""),
-          message: String(data.get("message") ?? ""),
+          name: field("name"),
+          email: field("email"),
+          salon: field("salon"),
+          phone: field("phone"),
+          topic: field("topic"),
+          message: field("message"),
+          website: field("website"),
         }),
       });
 
-      const payload = (await response.json().catch(() => null)) as {
-        error?: string;
-      } | null;
-
       if (!response.ok) {
+        const payload = (await response.json().catch(() => null)) as { error?: string } | null;
+        const code = payload?.error;
+        setErrorCode(code && code in t.errors ? (code as ErrorCode) : "send_failed");
         setStatus("error");
-        setErrorMessage(
-          payload?.error || "Something went wrong. Please try again."
-        );
         return;
       }
 
       setStatus("success");
       form.reset();
     } catch {
+      setErrorCode("network");
       setStatus("error");
-      setErrorMessage("Network error. Please try again.");
     }
   }
 
+  const topics = Object.entries(t.topics) as [Topic, string][];
+
   return (
-    <section id="contact" className="relative border-t border-border/70 py-24 md:py-32">
-      <div className="mx-auto grid max-w-6xl gap-12 px-6 md:grid-cols-[0.9fr_1.1fr] md:gap-16">
+    <section id={id} className="border-t border-border py-24 md:py-28">
+      <div className="mx-auto grid max-w-6xl gap-12 px-4 sm:px-6 lg:grid-cols-[0.85fr_1.15fr] lg:gap-16">
         <div>
-          <p className="font-display text-sm font-semibold uppercase tracking-[0.22em] text-primary">
-            Contact
-          </p>
-          <h2 className="mt-4 font-display text-3xl font-semibold tracking-tight text-foreground sm:text-4xl">
-            Let&apos;s talk business, publishing, or partnerships.
-          </h2>
-          <p className="mt-4 text-muted-foreground">
-            Reach us directly by email or send a short message through the form.
+          <p className="eyebrow">{t.eyebrow}</p>
+          <h2 className="section-title mt-4 text-balance">{title ?? t.title}</h2>
+          <p className="mt-5 text-lg leading-relaxed text-muted-foreground">{lead ?? t.lead}</p>
+          <p className="mt-10 text-xs font-semibold uppercase tracking-[0.16em] text-muted-foreground">
+            {t.direct}
           </p>
           <a
-            href={`mailto:${company.email}`}
-            className="mt-8 inline-block text-lg text-primary transition-colors hover:text-primary/80"
+            href={`mailto:${email}`}
+            className="mt-2 inline-flex items-center gap-2 break-all text-lg font-semibold text-primary hover:underline"
           >
-            {company.email}
+            <Mail className="h-5 w-5 shrink-0" />
+            {email}
           </a>
         </div>
 
-        <form onSubmit={handleSubmit} className="space-y-5">
-          <div className="space-y-2">
-            <Label htmlFor="name">Name</Label>
-            <Input id="name" name="name" autoComplete="name" required />
+        <form
+          onSubmit={handleSubmit}
+          className="space-y-5 rounded-2xl border border-border bg-card p-6 shadow-soft sm:p-8"
+        >
+          <div className="grid gap-5 sm:grid-cols-2">
+            <Field id={`${id}-name`} label={t.name}>
+              <Input id={`${id}-name`} name="name" autoComplete="name" required maxLength={120} />
+            </Field>
+            <Field id={`${id}-email`} label={t.email}>
+              <Input
+                id={`${id}-email`}
+                name="email"
+                type="email"
+                autoComplete="email"
+                required
+                maxLength={200}
+              />
+            </Field>
+            <Field id={`${id}-salon`} label={t.salon} hint={t.optional}>
+              <Input id={`${id}-salon`} name="salon" autoComplete="organization" maxLength={120} />
+            </Field>
+            <Field id={`${id}-phone`} label={t.phone} hint={t.optional}>
+              <Input id={`${id}-phone`} name="phone" type="tel" autoComplete="tel" maxLength={40} />
+            </Field>
           </div>
-          <div className="space-y-2">
-            <Label htmlFor="email">Email</Label>
-            <Input
-              id="email"
-              name="email"
-              type="email"
-              autoComplete="email"
+
+          <Field id={`${id}-topic`} label={t.topic}>
+            <select
+              id={`${id}-topic`}
+              name="topic"
+              defaultValue={defaultTopic}
+              className="flex h-11 w-full rounded-md border border-input bg-card px-3 text-base text-foreground shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring sm:text-sm"
+            >
+              {topics.map(([value, label]) => (
+                <option key={value} value={value}>
+                  {label}
+                </option>
+              ))}
+            </select>
+          </Field>
+
+          <Field id={`${id}-message`} label={t.message}>
+            <Textarea
+              id={`${id}-message`}
+              name="message"
               required
+              maxLength={5000}
+              placeholder={t.messagePlaceholder}
             />
+          </Field>
+
+          {/* Zamka za spam botove — ljudi ovo polje ne vide. */}
+          <div className="hidden" aria-hidden>
+            <label htmlFor={`${id}-website`}>Website</label>
+            <input id={`${id}-website`} name="website" tabIndex={-1} autoComplete="off" />
           </div>
-          <div className="space-y-2">
-            <Label htmlFor="message">Message</Label>
-            <Textarea id="message" name="message" required />
+
+          <div className="flex flex-col gap-4 sm:flex-row sm:items-center">
+            <Button type="submit" size="lg" disabled={status === "loading"}>
+              {status === "loading" ? t.sending : t.send}
+            </Button>
+            {status === "success" ? (
+              <p className="text-sm font-medium text-success" role="status">
+                {t.success}
+              </p>
+            ) : null}
           </div>
-          <Button
-            type="submit"
-            size="lg"
-            className="w-full sm:w-auto"
-            disabled={status === "loading"}
-          >
-            {status === "loading" ? "Sending…" : "Send message"}
-          </Button>
-          {status === "success" ? (
-            <p className="text-sm text-primary" role="status">
-              Message sent. We&apos;ll get back to you soon.
-            </p>
-          ) : null}
           {status === "error" ? (
             <p className="text-sm text-destructive" role="alert">
-              {errorMessage} You can also email us at {company.email}.
+              {t.errors[errorCode]} {fill(t.fallback, { email })}
             </p>
           ) : null}
         </form>
       </div>
     </section>
+  );
+}
+
+function Field({
+  id,
+  label,
+  hint,
+  children,
+}: {
+  id: string;
+  label: string;
+  hint?: string;
+  children: React.ReactNode;
+}) {
+  return (
+    <div className="space-y-2">
+      <Label htmlFor={id}>
+        {label}
+        {hint ? <span className="ml-1 font-normal text-muted-foreground">({hint})</span> : null}
+      </Label>
+      {children}
+    </div>
   );
 }

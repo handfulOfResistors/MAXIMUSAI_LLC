@@ -2,14 +2,9 @@ export const company = {
   legalName: "MAXIMUSAI LLC",
   brandName: "MAXIMUSAI",
   formationDate: "August 6, 2025",
-  entityKind: "Limited Liability Company",
-  entityType: "General",
-  residency: "Domestic",
   state: "Delaware",
   email: "adjustrategy@gmail.com",
-  tagline: "Premium Indie Games",
-  description:
-    "An indie game development studio and digital games publisher, building polished experiences for players worldwide.",
+  siteUrl: process.env.NEXT_PUBLIC_SITE_URL || "https://maximusai.llc",
   registeredAgent: {
     name: "Northwest Registered Agent Service, Inc.",
     address: "8 The Green, Ste B",

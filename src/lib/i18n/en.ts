@@ -1,0 +1,555 @@
+import type { Dictionary } from "./sr";
+
+export const en: Dictionary = {
+  meta: {
+    title: "MAXIMUSAI — websites and online booking for hair salons",
+    description:
+      "We build modern websites, online booking chatbots and AI assistants for hair and beauty salons. Appointments go straight into your Google Calendar, with no per-booking fees.",
+    pricingTitle: "Pricing and subscription",
+    pricingDescription:
+      "Website, Website + booking chatbot and Custom AI chatbot plans. Monthly or yearly subscription, card payments via Stripe.",
+    guidesTitle: "Client guides",
+    guidesDescription:
+      "Client intake form, Google account and calendar guide, and booking system setup — in English and Serbian, as Word and PDF files.",
+    privacyTitle: "Privacy Policy",
+    termsTitle: "Terms of Service",
+    successTitle: "Subscription active",
+    cancelTitle: "Payment not completed",
+    ogLocale: "en_US",
+  },
+  nav: {
+    services: "Services",
+    work: "Work",
+    pricing: "Pricing",
+    guides: "Guides",
+    contact: "Contact",
+    cta: "See plans",
+    openMenu: "Open menu",
+    closeMenu: "Close menu",
+    language: "Language",
+    home: "Home",
+  },
+  hero: {
+    eyebrow: "For hair and beauty salons",
+    title: "A website that fills",
+    titleAccent: "your salon's calendar.",
+    lead: "We build modern salon websites with a chatbot that books clients straight into your Google Calendar. No per-booking fees, and no new app for you to learn.",
+    ctaPrimary: "See plans",
+    ctaSecondary: "How it works",
+    points: [
+      "Bookings straight into Google Calendar",
+      "Serbian and English",
+      "No fee per booking",
+    ],
+  },
+  chat: {
+    title: "Booking",
+    status: "Online",
+    greet: "Hello! Which service are you interested in?",
+    options: ["Women's haircut", "Hair colour", "Manicure"],
+    picked: "Hair colour",
+    askTime: "Here are tomorrow's free slots:",
+    times: ["10:00", "11:30", "14:00", "16:30"],
+    pickedTime: "11:30",
+    done: "Done! You're booked. See you tomorrow at 11:30.",
+    eventSource: "Google Calendar",
+    eventTitle: "Hair colour — Ana M.",
+    eventTime: "Tomorrow · 11:30–13:00",
+  },
+  services: {
+    eyebrow: "Services",
+    title: "Everything a salon needs online",
+    lead: "One partner for your website, bookings and a smart assistant. You look after clients, we look after the tech.",
+    items: [
+      {
+        title: "Salon website",
+        body: "A fast, elegant, mobile-first website: services, team, gallery, map, opening hours and contact. Optimised for Google search, in Serbian and English.",
+      },
+      {
+        title: "Booking chatbot",
+        body: "Clients pick a service, a day and a free slot, and the booking lands in your Google Calendar instantly. You and your client both get an email confirmation.",
+      },
+      {
+        title: "Custom AI chatbot",
+        body: "An assistant connected to an LLM (OpenAI, Claude or Gemini) that knows your services, prices and policies. It answers questions in natural language and guides clients to a booking.",
+      },
+      {
+        title: "Hosting and maintenance",
+        body: "Hosting, SSL certificate, backups and small content updates are included in the subscription. No surprises on your bill.",
+      },
+    ],
+  },
+  process: {
+    eyebrow: "How it works",
+    title: "From subscription to your first online booking",
+    lead: "The process is split into short steps, and each one comes with a detailed guide.",
+    steps: [
+      {
+        title: "Choose a plan",
+        body: "Subscribe online by card, monthly or yearly. Cancel whenever you like.",
+      },
+      {
+        title: "Fill in the questionnaire",
+        body: "Opening hours, services and durations, team and photos. We use it to build your website and configure bookings.",
+      },
+      {
+        title: "Connect Google Calendar",
+        body: "For chatbot plans: create a calendar and set up the system in your own account — about 35 minutes, following our guides.",
+      },
+      {
+        title: "Review and launch",
+        body: "We send you a preview link, make your changes and put the site live. From then on, bookings come in on their own.",
+      },
+    ],
+    cta: "Open the guides",
+  },
+  work: {
+    eyebrow: "Work",
+    title: "La Vie Elegance, Niš",
+    lead: "A hair and beauty salon with a team of four and a wide range of services — from cuts and balayage to nails, waxing and lashes.",
+    clientLabel: "Client",
+    clientValue: "La Vie Elegance — hair and beauty salon",
+    locationLabel: "Location",
+    locationValue: "Niš, Serbia",
+    planLabel: "Plan",
+    planValue: "Website + booking chatbot",
+    deliveredTitle: "What we delivered",
+    delivered: [
+      "Bilingual website (Serbian / English) with services, team and contact",
+      "A chatbot that books appointments straight into the salon's Google Calendar",
+      "Automatic checks for free slots, breaks and days off",
+      "Email notification to the salon and confirmation to the client for every booking",
+      "SEO setup and structured data for Google search",
+    ],
+    visit: "Visit the site",
+    imageAlt: "La Vie Elegance website home page",
+    mobileAlt: "Booking chatbot on the La Vie Elegance website, shown on a phone",
+  },
+  why: {
+    eyebrow: "Why MAXIMUSAI",
+    title: "Built for salons, not for everyone",
+    items: [
+      {
+        title: "No fee per booking",
+        body: "You pay a flat subscription. Whether you take 20 or 2,000 bookings a month, the price stays the same.",
+      },
+      {
+        title: "Your data stays yours",
+        body: "The calendar and booking system live in your own Google account. You're the owner and can revoke our access in two clicks.",
+      },
+      {
+        title: "Works with what you already use",
+        body: "You see bookings in Google Calendar on your phone. Appointments you add by hand are automatically treated as taken.",
+      },
+      {
+        title: "Direct support",
+        body: "You work directly with the people who built your website — no call centre, no ticket queue.",
+      },
+    ],
+    companyLabel: "Company",
+    companyValue: "MAXIMUSAI LLC · Delaware, USA",
+    teamLabel: "Team",
+    teamValue: "Serbia",
+    emailLabel: "Email",
+  },
+  pricing: {
+    eyebrow: "Pricing",
+    title: "Simple plans, no hidden costs",
+    lead: "Pick a plan and subscribe online. Pay yearly and get {months} months free.",
+    monthly: "Monthly",
+    yearly: "Yearly",
+    yearlyBadge: "{months} months free",
+    perMonth: "/mo",
+    perYear: "/yr",
+    from: "from",
+    monthlyNote: "billed monthly",
+    yearlyNote: "{amount} per month, billed once a year",
+    popular: "Most popular",
+    subscribe: "Subscribe",
+    redirecting: "Redirecting to checkout…",
+    quote: "Request a quote",
+    secure: "Secure card payment via Stripe. No contract — cancel whenever you like.",
+    manage: "Already subscribed? Manage your subscription",
+    aiNote:
+      "Larger projects — multiple locations, Instagram or WhatsApp integration, custom features — are quoted individually.",
+    errors: {
+      notConfigured:
+        "Online payment isn't switched on yet. Email us at {email} and we'll send you a payment link.",
+      generic: "Something went wrong. Please try again or email us at {email}.",
+      network: "Can't reach the server. Check your connection and try again.",
+    },
+    plans: {
+      website: {
+        name: "Website",
+        tagline: "A professional online presence for your salon.",
+        features: [
+          "Modern, mobile-first website",
+          "Serbian and English",
+          "Services, team, gallery, map and opening hours",
+          "Google search optimisation (SEO)",
+          "Hosting, SSL and domain setup",
+          "Small content updates included",
+        ],
+      },
+      booking: {
+        name: "Website + chatbot",
+        tagline: "Website plus 24/7 online booking into your Google Calendar.",
+        features: [
+          "Everything in Website",
+          "Booking chatbot: service → day → time slot",
+          "Bookings straight into Google Calendar",
+          "Email notice to the salon and confirmation to the client",
+          "Opening hours, breaks and holidays set to your needs",
+          "Double-booking protection",
+          "No fee per booking",
+        ],
+      },
+      ai: {
+        name: "Custom AI chatbot",
+        tagline: "A smart assistant connected to an LLM, trained on your salon.",
+        features: [
+          "Everything in Website + chatbot",
+          "AI assistant — OpenAI, Claude or Gemini, your choice",
+          "Knows your services, prices, policies and FAQs",
+          "Talks in Serbian and English",
+          "Recommends services and guides clients to a booking",
+          "Monthly conversation report",
+          "Up to 1,000 conversations a month included",
+        ],
+      },
+    },
+  },
+  pricingPage: {
+    compareTitle: "Compare plans",
+    compareFeature: "What you get",
+    compareRows: [
+      { label: "Mobile-first website", values: [true, true, true] },
+      { label: "Serbian and English", values: [true, true, true] },
+      { label: "SEO and Google structured data", values: [true, true, true] },
+      { label: "Hosting, SSL and backups", values: [true, true, true] },
+      { label: "Online booking (chatbot)", values: [false, true, true] },
+      { label: "Bookings in your Google Calendar", values: [false, true, true] },
+      { label: "Email confirmations to clients", values: [false, true, true] },
+      { label: "AI answers to questions (LLM)", values: [false, false, true] },
+      { label: "Trained on your services and prices", values: [false, false, true] },
+      { label: "Monthly conversation report", values: [false, false, true] },
+    ],
+    included: "Included",
+    notIncluded: "Not included",
+    faqTitle: "Billing questions",
+    faq: [
+      {
+        q: "How do I pay?",
+        a: "By card (Visa, Mastercard, American Express and others) through Stripe, one of the world's largest online payment platforms. Card details never touch our servers. An invoice is emailed to you after every payment.",
+      },
+      {
+        q: "Can I cancel?",
+        a: "Yes, at any time and with no contract. Your subscription stays active until the end of the paid period and then doesn't renew.",
+      },
+      {
+        q: "Can I change plans later?",
+        a: "Of course. You can move from Website to Website + chatbot or to the AI chatbot whenever you like — get in touch and we'll prorate the difference.",
+      },
+      {
+        q: "What happens to my website if I cancel?",
+        a: "The website and chatbot are switched off at the end of the paid period. Your Google Calendar and every booking in it stay yours, as does your domain if it's registered in your name.",
+      },
+      {
+        q: "Why does the AI chatbot say “from”?",
+        a: "The starting price covers a standard assistant for one salon. If you need multiple locations, Instagram or WhatsApp integration, or custom features, we'll send you a tailored quote.",
+      },
+      {
+        q: "Do I need a Google account?",
+        a: "For chatbot plans, yes — a free Gmail account for the salon. Our guides explain step by step how to create and set it up.",
+      },
+    ],
+    quoteTitle: "Request a quote for a custom AI chatbot",
+    quoteLead:
+      "Tell us what you need — number of locations, channels (website, Instagram, WhatsApp) and what the assistant should know. We'll get back to you with a proposal and a price.",
+  },
+  faq: {
+    eyebrow: "FAQ",
+    title: "Before we get started",
+    items: [
+      {
+        q: "Do I pay a fee for each booking?",
+        a: "No. You only pay a flat monthly or yearly subscription, regardless of how many bookings you get.",
+      },
+      {
+        q: "What's the difference between the chatbot and the AI chatbot?",
+        a: "The booking chatbot guides clients through predefined steps — it's fast, reliable and can't get things wrong. The AI chatbot is connected to a large language model (LLM) and talks freely: it answers questions about services, prices and aftercare, then books the appointment.",
+      },
+      {
+        q: "What if two clients pick the same slot?",
+        a: "It can't happen. The system checks the calendar at the moment of confirmation and offers the second client the remaining free slots.",
+      },
+      {
+        q: "Can I still take bookings by phone?",
+        a: "Of course. Add the appointment to Google Calendar like any other event and the website immediately treats it as taken.",
+      },
+      {
+        q: "I already use SrediMe or Booksy. Can I switch?",
+        a: "You can switch completely, or run both platforms side by side for a while. Anything in your Google Calendar is treated as taken by our system.",
+      },
+      {
+        q: "Who owns the website and the data?",
+        a: "Your content, photos, domain and the calendar with your clients' details are yours. The booking system runs in your own Google account, so you control access to it.",
+      },
+    ],
+  },
+  contact: {
+    eyebrow: "Contact",
+    title: "Let's build your salon's website",
+    lead: "Tell us what you need or ask us anything. We'll get back to you as soon as we can.",
+    direct: "Or email us directly",
+    name: "Full name",
+    email: "Email",
+    salon: "Salon name",
+    phone: "Phone",
+    optional: "optional",
+    topic: "I'm interested in",
+    topics: {
+      general: "General question",
+      website: "Website plan",
+      booking: "Website + chatbot plan",
+      ai: "Custom AI chatbot",
+    },
+    message: "Message",
+    messagePlaceholder:
+      "E.g. we run a salon with three stylists in Novi Sad and we're interested in online booking…",
+    send: "Send message",
+    sending: "Sending…",
+    success: "Message sent. We'll be in touch soon.",
+    errors: {
+      missing_fields: "Please fill in your name, email and message.",
+      invalid_email: "That email address doesn't look right.",
+      too_long: "Your message is too long.",
+      not_configured: "Messaging isn't working right now.",
+      send_failed: "The message couldn't be sent.",
+      network: "Can't reach the server.",
+    },
+    fallback: "You can also email us directly at {email}.",
+  },
+  checkout: {
+    successTitle: "Thank you! Your subscription is active.",
+    successLead:
+      "A confirmation and invoice are on their way to your inbox. The next step is to send us your salon's details.",
+    planLabel: "Plan",
+    intervalLabel: "Billing",
+    emailLabel: "Email",
+    intervals: { monthly: "monthly", yearly: "yearly" },
+    nextTitle: "What happens next",
+    next: [
+      "Download and fill in the client intake form.",
+      "For chatbot plans, prepare your Google account and calendar.",
+      "Send everything to {email} — we'll reply with the next steps.",
+    ],
+    guidesCta: "Open the guides",
+    manage: "Manage subscription",
+    home: "Back to home",
+    cancelTitle: "Payment not completed",
+    cancelLead:
+      "You haven't been charged. If you ran into a problem or have a question before subscribing, get in touch.",
+    back: "Back to pricing",
+    contact: "Contact us",
+    portalError:
+      "The subscription portal isn't available right now. Email us at {email}.",
+  },
+  guides: {
+    eyebrow: "Client guides",
+    title: "Everything we need to launch your website and bookings",
+    lead: "Three short steps you do once. Each has a guide in English and Serbian, as a Word and a PDF file.",
+    contents: "Contents",
+    overviewTitle: "Which steps your plan needs",
+    overviewHeaders: ["Plan", "Steps", "Your time"],
+    overviewRows: [
+      ["Website", "Step 1", "about 20 min"],
+      ["Website + chatbot", "Steps 1, 2 and 3", "about 55 min"],
+      ["Custom AI chatbot", "Steps 1, 2 and 3", "about 55 min"],
+    ],
+    step: "Step",
+    duration: "about {n} min",
+    requiredFor: "Needed for",
+    scopeAll: "all plans",
+    scopeBooking: "chatbot plans",
+    youDo: "What you do",
+    youSend: "What you send us",
+    downloads: "Download",
+    wordHint: "Word — to fill in",
+    wordHintRead: "Word document",
+    pdfHint: "PDF — to read and print",
+    langSr: "Srpski",
+    langEn: "English",
+    steps: [
+      {
+        key: "intake",
+        title: "Client intake form",
+        summary:
+          "The details we use to build your website and configure bookings: salon basics, contact, opening hours and breaks, days off, booking rules, services with durations, team and photos.",
+        minutes: 20,
+        scope: "all",
+        doing: [
+          "Download the Word document and fill it in directly — click into a grey field and type.",
+          "The most important part is your services and their duration in minutes, including washing and drying — it decides how many slots the system offers each day.",
+          "If you don't know something yet, leave it blank and we'll add it later.",
+        ],
+        send: [
+          "The completed form",
+          "Your logo in the best quality you have (.svg, .ai, .eps or .pdf)",
+          "8–15 photos of the interior and your work, full size",
+          "Your current price list, in any format",
+        ],
+        note: {
+          tone: "info",
+          text: "Send photos via WeTransfer or Google Drive rather than as email attachments — email shrinks them and they lose quality.",
+        },
+      },
+      {
+        key: "calendar",
+        title: "Google account and calendar",
+        summary:
+          "You prepare the salon's Google account and a dedicated calendar that receives bookings from the website. It's the same calendar you'll see on your phone.",
+        minutes: 15,
+        scope: "booking",
+        doing: [
+          "Create a Google account for the salon — a business account, not an employee's personal one.",
+          "Turn on two-step verification.",
+          "Create a new calendar called “Bookings — salon name”, with the Belgrade time zone.",
+          "Share the calendar with your staff and with {email}, at the “Make changes to events” level.",
+          "In the calendar settings, under “Integrate calendar”, copy the calendar ID.",
+          "Install Google Calendar on your phone and turn on notifications.",
+        ],
+        send: [
+          "The salon's Gmail address",
+          "The calendar ID (it ends with @group.calendar.google.com)",
+          "Confirmation that you've shared the calendar with us",
+        ],
+        note: {
+          tone: "warning",
+          text: "Copy only the calendar ID, not the links below it that start with https://calendar.google.com/… — this is the most common mistake in the whole process.",
+        },
+      },
+      {
+        key: "appsScript",
+        title: "Setting up the booking system",
+        summary:
+          "You install the program that connects the website to the calendar in your own Google account — you own it and it doesn't depend on us. We email you the Code.gs file, already configured for your salon.",
+        minutes: 20,
+        scope: "booking",
+        doing: [
+          "Open a private window (Ctrl+Shift+N) and sign in to the salon account only.",
+          "At script.google.com, create a new project and paste in the contents of Code.gs.",
+          "In the project settings, set the time zone to Belgrade (GMT+01:00).",
+          "Run the “dijagnostika” function and grant access — the log must show \"kalendarPronadjen\": true.",
+          "Publish it: Deploy → New deployment → Web app, Execute as: Me, Who has access: Anyone.",
+        ],
+        send: ["The Web app URL (https://script.google.com/macros/s/…/exec)"],
+        note: {
+          tone: "warning",
+          text: "Be signed in to the salon account only. If another Google account is signed in in the same browser, the program is created under the wrong account and can't see your calendar.",
+        },
+      },
+    ],
+    finalTitle: "We connect and test",
+    finalBody:
+      "We add the address to your website, test a booking end to end and get back to you with confirmation that everything works. From then on, bookings arrive in your calendar by themselves.",
+    securityTitle: "Security — four rules",
+    security: [
+      "Never give anyone the salon account password, including us. We don't need it and will never ask for it — we get access through a Google Calendar invitation, which you can revoke at any time.",
+      "Never read out a code you receive by SMS to anyone. Only scammers ask for it.",
+      "Keep two-step verification on. Without it, guessing your password is enough to get all your clients' details.",
+      "Never paste code into Apps Script that someone else sends you, whoever they claim to be. A program there gets access to your calendar and can send email in your name.",
+    ],
+    dailyTitle: "Using the calendar day to day",
+    dailyLead:
+      "Once it's set up there's nothing new to learn — you do everything in Google Calendar, just as before.",
+    dailyHeaders: ["You want to", "What you do"],
+    dailyRows: [
+      [
+        "See new bookings",
+        "Nothing. They appear in the calendar by themselves, with the name, phone number and service in the event description.",
+      ],
+      [
+        "Close a whole day",
+        "Create an all-day event on that day (e.g. “Closed”). The whole day disappears from the website.",
+      ],
+      [
+        "Block part of a day",
+        "Add a regular event for that time. Clients can no longer pick it.",
+      ],
+      [
+        "Add a booking by hand",
+        "Add an event like any other. The website immediately treats it as taken.",
+      ],
+      ["Cancel a booking", "Delete the event. The slot is instantly available again."],
+      [
+        "Move a booking",
+        "Drag the event to the new time. Always call the client — the system doesn't do that for you.",
+      ],
+    ],
+    dontTitle: "What not to touch",
+    dont: [
+      "Don't delete the bookings calendar — online booking stops working immediately.",
+      "Don't change the calendar's time zone — every booking would shift by several hours.",
+      "Don't rename the calendar without telling us first.",
+      "Opening hours aren't changed in the calendar but in the system settings — let us know and we'll update them.",
+    ],
+    updateTitle: "When we send you an update",
+    updateLead:
+      "When your opening hours, a service duration or anything else changes, we send you a new Code.gs. Then you do this:",
+    updateSteps: [
+      "Open script.google.com and your project.",
+      "Select all the code (Ctrl+A), delete it, paste in the new code and save (Ctrl+S).",
+      "Click Deploy → Manage deployments, then the pencil icon.",
+      "Under Version choose New version and click Deploy.",
+    ],
+    updateNote:
+      "The last two steps are required. Saving alone changes nothing — the website keeps using the old version until you publish a new one. The address stays the same, so there's nothing to send us.",
+    troubleTitle: "If something isn't working",
+    troubleHeaders: ["What you see", "What's wrong"],
+    troubleRows: [
+      [
+        "I can't see the list of functions in the toolbar",
+        "The window is too narrow. Zoom out with Ctrl and minus — the list appears to the right of the Debug button.",
+      ],
+      [
+        "kalendarPronadjen: false",
+        "The program was created under the wrong Google account, or the calendar was deleted. Check the nalogKojiIzvrsava line in the log — it must show the salon's address.",
+      ],
+      [
+        "“Sorry, unable to open the file”",
+        "Several Google accounts are signed in to the browser. Close everything and work in a private window.",
+      ],
+      [
+        "Code changes have no effect",
+        "You haven't published a new version: Deploy → Manage deployments → pencil → New version → Deploy.",
+      ],
+      [
+        "Bookings are off by a few hours",
+        "The project time zone isn't Belgrade. Go back to the project settings.",
+      ],
+      [
+        "Something else",
+        "Stop and let us know. Don't delete the project or create a new one — we can see what happened in the log.",
+      ],
+    ],
+    helpTitle: "Stuck?",
+    helpBody:
+      "Stop and get in touch — we'll go through the steps together, which is quicker than struggling alone.",
+    helpCta: "Email us",
+  },
+  footer: {
+    tagline: "Websites, online booking and AI chatbots for hair and beauty salons.",
+    pages: "Pages",
+    legal: "Legal",
+    contact: "Contact",
+    rights: "All rights reserved.",
+    entity: "Delaware Limited Liability Company · team in Serbia",
+    privacy: "Privacy Policy",
+    terms: "Terms of Service",
+    manage: "Manage subscription",
+  },
+  legal: {
+    updated: "Last updated",
+  },
+};

@@ -1,0 +1,43 @@
+{
+  "$comment": "Cene paketa i Stripe Payment Link URL-ovi. Kad je link upisan, dugme „Pretplati se“ vodi direktno na njega. Prazan link = sajt pravi Checkout preko API-ja (tada posle izmene cena pokreni `npm run stripe:setup`).",
+  "currency": "eur",
+  "yearlyFreeMonths": 2,
+  "plans": [
+    {
+      "id": "website",
+      "stripeName": "Sajt / Website",
+      "monthly": 19,
+      "yearly": 190,
+      "from": false,
+      "highlight": false,
+      "paymentLinks": {
+        "monthly": "",
+        "yearly": ""
+      }
+    },
+    {
+      "id": "booking",
+      "stripeName": "Sajt + chatbot za zakazivanje / Website + booking chatbot",
+      "monthly": 35,
+      "yearly": 350,
+      "from": false,
+      "highlight": true,
+      "paymentLinks": {
+        "monthly": "",
+        "yearly": ""
+      }
+    },
+    {
+      "id": "ai",
+      "stripeName": "Custom AI chatbot (LLM)",
+      "monthly": 79,
+      "yearly": 790,
+      "from": true,
+      "highlight": false,
+      "paymentLinks": {
+        "monthly": "",
+        "yearly": ""
+      }
+    }
+  ]
+}
